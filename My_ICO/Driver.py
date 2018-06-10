@@ -10,7 +10,7 @@ from boa.interop.Neo.Storage import *
 NEP5_METHODS = ['name', 'symbol', 'decimals', 'totalSupply', 'balanceOf', 'transfer']
 
 ctx = GetContext()
-
+# 0xd390a99b339669dada5e25a112a2d929ee3bcc05
 def Main(operation , args):
 
     trigger = GetTrigger()
@@ -55,4 +55,12 @@ def Main(operation , args):
     return False
 
 def deploy():
-    pass
+    if not CheckWitness(TOKEN_OWNER):
+        return False
+
+    if not Get(ctx, 'initialized'):
+        Put(ctx, 'initialized', 1)
+        Put(ctx, TOKEN_OWNER, TOKEN_INITIAL_AMOUNT)
+        return add_to_circulation(ctx, TOKEN_INITIAL_AMOUNT)
+
+    return False
