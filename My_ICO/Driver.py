@@ -10,7 +10,7 @@ from boa.interop.Neo.Storage import *
 NEP5_METHODS = ['name', 'symbol', 'decimals', 'totalSupply', 'balanceOf', 'transfer']
 
 ctx = GetContext()
-# 0xd390a99b339669dada5e25a112a2d929ee3bcc05
+# 0xe70e27cf705e33de9f42bd4b89781a6e71c6ed06
 def Main(operation , args):
 
     trigger = GetTrigger()
@@ -30,25 +30,25 @@ def Main(operation , args):
                 return handle_nep51(ctx, operation, args)
 
         if operation == 'deploy':
-            deploy()
+            return deploy()
 
         if operation == 'circulation':
-            get_circulation(ctx)
+            return get_circulation(ctx)
 
         if operation == 'mintTokens':
-            pass
+            return perform_exchange(ctx)
 
         if operation == 'crowdsale_register ':
-            kyc_register(ctx, args)
+            return kyc_register(ctx, args)
 
         if operation == 'crowdsale_status ':
-            kyc_status(ctx, args)
+            return kyc_status(ctx, args)
 
         if operation == 'crowdsale_avaiable ':
-            crowdsale_available_amount(ctx)
+            return crowdsale_available_amount(ctx)
 
         if operation == 'get_attachements ':
-            get_asset_attachments()
+            return get_asset_attachments()
 
         return 'Unknown operation'
 
