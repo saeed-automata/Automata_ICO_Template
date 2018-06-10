@@ -3,6 +3,7 @@ from boa.interop.Neo.Action import RegisterAction
 # from boa.interop.Neo.Storage import *
 # from boa.builtins import concat
 from My_ICO.my_token import *
+from boa.interop.Neo.Runtime import CheckWitness
 
 OnTransfer = RegisterAction('transfer', 'addr_from', 'addr_to', 'amount')
 OnApprove = RegisterAction('approve', 'addr_from', 'addr_to', 'amount')
